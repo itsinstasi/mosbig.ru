@@ -1,2 +1,2 @@
 ﻿User-agent: *
-Sitemap: http://mosbig-ru.itsinsta.site/sitemap.xml
+Sitemap: http://mosbig.ru/sitemap.xml
