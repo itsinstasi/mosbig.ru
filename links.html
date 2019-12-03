@@ -106,13 +106,19 @@ background: #3500ff;
 
 					<div class="links-page-list">
 
+
+
 						<div class="links-page-btn-pic">
 							<center><img src="./img/mosbig.jpg" alt="">
 							</img></center>
 						</div>
 
 
+
+
 						<div class="links-page-title">Услуги компании:</div>
+
+
 
 
 
@@ -128,6 +134,8 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
+
+
 						<a href="https://mosbig.ru" class="links-page-btn-pic" style="
 background: #3500ff;--elems-hover: #3500ff;
 "
@@ -136,6 +144,8 @@ background: #3500ff;--elems-hover: #3500ff;
 							<img src="./img/marketing.jpg" alt="">
 							</img>
 						</a>
+
+
 
 
 
@@ -150,6 +160,8 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
+
+
 						<a href="https://mosbig.ru" class="links-page-btn-pic" style="
 background: #3500ff;--elems-hover: #3500ff;
 "
@@ -161,6 +173,8 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
+
+
 						<div class="links-page-blc--opacity">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
@@ -168,7 +182,11 @@ background: #3500ff;--elems-hover: #3500ff;
 						</div>
 
 
+
+
 						<div class="links-page-title">Дополнительные услуги:</div>
+
+
 
 
 
@@ -181,6 +199,8 @@ background: #3500ff;--elems-hover: #3500ff;
 							<img src="./img/network_content.jpg" alt="">
 							</img>
 						</a>
+
+
 
 
 
@@ -197,6 +217,8 @@ background: #3500ff;
 
 
 
+
+
 						<a href="https://mosbig.ru" class="links-page-btn " style="
 background: #3500ff;
 " 
@@ -207,6 +229,8 @@ background: #3500ff;
 								Копирайтинг
 							</strong>
 						</a>
+
+
 
 
 
@@ -223,6 +247,8 @@ background: #3500ff;
 
 
 
+
+
 						<a href="https://mosbig.ru" class="links-page-btn " style="
 background: #3500ff;
 " 
@@ -233,6 +259,8 @@ background: #3500ff;
 								Работа с видео
 							</strong>
 						</a>
+
+
 
 
 
@@ -249,6 +277,8 @@ background: #3500ff;
 
 
 
+
+
 						<div class="links-page-blc--opacity">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
@@ -256,7 +286,11 @@ background: #3500ff;
 						</div>
 
 
+
+
 						<div class="links-page-title">Спецпредложение:</div>
+
+
 
 
 
@@ -284,11 +318,15 @@ background: #3500ff;
 
 
 
+
+
 						<div class="links-page-blc">
 							<div class="links-page-blc__txt">
 								<p>Создаём многостраничные сайты работающие в связке с Инстаграм, открывающие новые возможности вовлечения посетителей ваших ресурсов, всего за 1 день на новом движке</p>
 							</div>
 						</div>
+
+
 
 
 
@@ -305,11 +343,15 @@ background: #3500ff;
 
 
 
+
+
 						<div class="links-page-blc--opacity">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
 						</div>
+
+
 
 
 
@@ -320,10 +362,14 @@ background: #3500ff;
 
 
 
+
+
 						<div class="links-page-btn-pic">
 							<center><img src="./img/sponsors.jpg" alt="">
 							</img></center>
 						</div>
+
+
 
 
 
@@ -334,6 +380,8 @@ background: #3500ff;
 
 
 
+
+
 						<div class="links-page-blc--opacity">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
@@ -341,7 +389,11 @@ background: #3500ff;
 						</div>
 
 
+
+
 						<div class="links-page-title">Нашим клиентам:</div>
+
+
 
 
 
@@ -354,6 +406,8 @@ background: #3500ff;--elems-hover: #3500ff;
 							<img src="./img/chatbots.jpg" alt="">
 							</img>
 						</a>
+
+
 
 
 
@@ -384,5 +438,44 @@ background: #3500ff;--elems-hover: #3500ff;
 	<script src="js/jquery.init.js"></script>
 	<!--my scripts-->
 	<script src="js/jquery.main.js"></script>
+
+    <script type="text/javascript">
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
+$(document).ready(function(){
+    $('form').submit(function(){
+	event.preventDefault(); //prevent default action 
+
+	var contact = $(this).find('input[name="contact"]').val();
+	if (!contact) return false;
+
+	var post_url = $(this).attr("action"); //get form action url
+	var request_method = $(this).attr("method"); //get form GET/POST method
+	var form_data = JSON.stringify(getFormData($(this)));
+
+	var form = $(this);
+	$.ajax({
+		url : post_url,
+		type: request_method,
+                contentType: 'application/json',
+		data : form_data
+	}).done(function(response){
+	}).fail(function(){
+	});
+
+        return false;
+    });
+});
+    </script>
+
 </body>
 </html>
