@@ -175,7 +175,9 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
@@ -279,7 +281,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
@@ -320,7 +324,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p>Создаём многостраничные сайты работающие в связке с Инстаграм, открывающие новые возможности вовлечения посетителей ваших ресурсов, всего за 1 день на новом движке</p>
 							</div>
@@ -345,7 +351,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
@@ -382,7 +390,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
@@ -411,7 +421,9 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p>Контакты:<br/>+7 (926) 272-38-89</p>
 							</div>
@@ -469,6 +481,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 

@@ -209,7 +209,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><font color="#0000ff"> <b>БЕЗОПАСНО!</b><br/>
 Для подключения <font color="red">НЕ требуется</font> доступ к вашему аккаунту Instagram;<br/>
@@ -231,7 +233,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><br/></p>
 							</div>
@@ -242,7 +246,9 @@ background: #3500ff;
 
 						<div class="links-page-title">Увеличивайте активность посетителей ваших ресурсов:</div>
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<div class="links-page-blc__accordion-btn js-accordion-btn">Маршрутизация клиентов</div>
 								<div class="links-page-blc__accordion-main js-accordion-main">
@@ -338,7 +344,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p><font color="#0000ff"> <b>БЕЗОПАСНО!</b><br/>
 Для подключения <font color="red">НЕ требуется</font> доступ к вашему аккаунту Instagram;<br/>
@@ -351,7 +359,9 @@ background: #3500ff;
 
 
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<div class="links-page-blc__accordion-btn js-accordion-btn">Подключить через менеджера</div>
 								<div class="links-page-blc__accordion-main js-accordion-main">
@@ -368,7 +378,9 @@ background: #3500ff;
 
 						<div class="links-page-title">Что входит в стоимость подключения:</div>
 
-						<div class="links-page-blc">
+						<div class="links-page-blc" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p>Создание портала;<br/>
 Абонентская плата в год за пользование порталом;<br/>
@@ -407,7 +419,9 @@ background: #3500ff;
 
 						<div class="links-page-title">Безопасное пользование сервисом:</div>
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p>Для создания портала не нужен доступ к вашему аккаунту;<br/>
 Вы можете в любой момент отключить портал.</p>
@@ -431,7 +445,9 @@ background: #3500ff;--elems-hover: #3500ff;
 
 
 
-						<div class="links-page-blc--opacity">
+						<div class="links-page-blc--opacity" style="
+background: #3500ff;
+">
 							<div class="links-page-blc__txt">
 								<p>Контакты:<br/>+7 (926) 272-38-89</p>
 							</div>
@@ -489,6 +505,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
